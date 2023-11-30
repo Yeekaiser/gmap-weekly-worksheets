@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3800616816674248111}
   - component: {fileID: 3800616816674248110}
   - component: {fileID: 3800616816674248105}
+  - component: {fileID: 3800616816674248098}
   m_Layer: 0
   m_Name: Sonic
   m_TagString: Untagged
@@ -113,3 +114,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMesh: {fileID: 0}
   clonedMesh: {fileID: 0}
+--- !u!114 &3800616816674248098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800616816674248104}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90329dd62668f248bd2278e34eca238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

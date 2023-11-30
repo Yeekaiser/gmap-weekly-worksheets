@@ -80,8 +80,8 @@ public class HMatrix2D
     {
         return new HVector2D
         (
-            left.Entries[0, 0] * right.x + left.Entries[0, 1] * right.y,
-            left.Entries[1, 0] * right.x + left.Entries[1, 1] * right.y            
+            left.Entries[0, 0] * right.x + left.Entries[0, 1] * right.y + left.Entries[0, 2] * right.h,
+            left.Entries[1, 0] * right.x + left.Entries[1, 1] * right.y + left.Entries[1, 2] * right.h          
         );
     }
 
@@ -205,6 +205,7 @@ public class HMatrix2D
         SetIdentity();
         Entries[0, 2] = transX;
         Entries[1, 2] = transY;
+        //Print();
     }
 
     public void SetRotationMat(float rotDeg)
