@@ -1,5 +1,3 @@
-// Uncomment this whole file.
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,17 +9,16 @@ public class HMatrix2D
 
     public HMatrix2D()
     {
-        Entries = new float[3, 3];
+        //Entries = new float[3, 3];
         // your code here
+        //SetIdentity();
     }
 
     public HMatrix2D(float[,] multiArray)
     {
         for (int y = 0; y < 3; y++)
             for (int x = 0; x < 3; x++)
-            {
                 Entries[y, x] = multiArray[y, x];
-            }
     }
 
     public HMatrix2D(float m00, float m01, float m02,
@@ -52,7 +49,6 @@ public class HMatrix2D
             for (int x = 0; x < 3; x++)
                 left.Entries[y, x] += right.Entries[y, x];
         return left;
-        //left += right;
     }
 
     public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
@@ -62,7 +58,6 @@ public class HMatrix2D
             for (int x = 0; x < 3; x++)
                 left.Entries[y, x] -= right.Entries[y, x];
         return left;
-        //left += right;
     }
 
     public static HMatrix2D operator *(HMatrix2D left, float scalar)
@@ -71,7 +66,6 @@ public class HMatrix2D
             for (int x = 0; x < 3; x++)
                 left.Entries[y, x] *= scalar;
         return left;
-        //return left * scalar;
     }
 
     // Note that the second argument is a HVector2D object
@@ -137,24 +131,6 @@ public class HMatrix2D
     );
     }
 
-    //public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right)
-    //{
-    //    float[,] result = new float[3, 3];
-
-    //    for (int y = 0; y < 3; y++)
-    //    {
-    //        for (int x = 0; x < 3; x++)
-    //        {
-    //            for (int z = 0; z < 3; z++)
-    //            {
-    //                result[y, x] += left.Entries[y, x] * right.Entries[z, x];
-    //            }
-    //        }
-    //    }
-
-    //    return new HMatrix2D(result);
-    //}
-
 
     public static bool operator ==(HMatrix2D left, HMatrix2D right)
     {
@@ -172,6 +148,16 @@ public class HMatrix2D
                 if (left.Entries[y, x] != right.Entries[y, x])
                     return true;
         return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
     }
 
     //    public HMatrix2D transpose()
@@ -213,15 +199,18 @@ public class HMatrix2D
         SetIdentity();
         float rad = rotDeg * Mathf.Deg2Rad;
         Entries[0, 0] = Mathf.Cos(rad);
-        Entries[0, 1] = Mathf.Sin(-rad);
+        Entries[0, 1] = -Mathf.Sin(rad);
         Entries[1, 0] = Mathf.Sin(rad);
         Entries[1, 1] = Mathf.Cos(rad);
     }
 
-    //    public void SetScalingMat(float scaleX, float scaleY)
-    //    {
-    //        // your code here
-    //    }
+    public void SetScalingMat(float scaleX, float scaleY)
+    {
+        // your code here
+        SetIdentity();
+        Entries[0, 0] = scaleX;
+        Entries[1, 1] = scaleY;
+    }
 
     public void Print()
     {
@@ -236,4 +225,6 @@ public class HMatrix2D
         }
         Debug.Log(result);
     }
+    
+
 }
